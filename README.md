@@ -57,13 +57,20 @@ It is highly recommended to use a virtual environment to manage the project's de
 
 * What does the model you have implemented do and when should it be used?
 
-  The implemented model is an iterative LASSO regression model that uses a homotopy method to update its solution as new data points are added. It maintains an active set of features along with their signs, and it updates the inverse Hessian (matrix K) incrementally using rank-1 updates. This model is particularly useful in online learning scenarios where data arrives sequentially and you need to update the regression solution in real time. It is also suitable for high-dimensional datasets where only a few features are relevant (i.e., when a sparse solution is expected).
+  The model implements Lasso regression using the Homotopy Method. It is particularly useful for high-dimensional datasets where sparsity in the model coefficients is desired for feature selection and improved interpretability.
+  
 * How did you test your model to determine if it is working reasonably correctly?
+  We developed a suite of tests using pytest, including:
+    - Testing on small synthetic datasets with known true coefficients.
+    - Testing on collinear datasets to ensure that the model produces sparse solutions.
+    - Direct comparison of prediction accuracy and coefficient estimation with scikit-learn’s Lasso model (LassoComparisson.ipynb).
   
 * What parameters have you exposed to users of your implementation in order to tune performance?
 
-  The model exposes the following key parameters for performance tuning:
-    - mu (Regularization Parameter): This parameter (often denoted as lambda) controls the strength of the L1 penalty. Adjusting mu allows users to control the sparsity level of the solution.
-    - tol (Numerical Tolerance): This parameter sets the threshold for comparisons with zero, ensuring numerical stability during the iterative updates. It affects how the model determines if a coefficient is active or should be set to zero.
-These parameters enable users to fine-tune the balance between sparsity and fitting accuracy, as well as the numerical stability of the solution.
+The following parameters can be tuned:
+    - mu: The regularization parameter controlling the strength of the L1 penalty.
+    - tol: The tolerance used to determine when a coefficient is effectively zero.
+    - max_iter: The maximum number of iterations for the Homotopy algorithm.
+These parameters allow users to adjust the level of sparsity, convergence precision, and computational cost.
+
 * Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
