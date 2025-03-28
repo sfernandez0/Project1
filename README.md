@@ -63,5 +63,11 @@ scikit-learn
 
   The implemented model is an iterative LASSO regression model that uses a homotopy method to update its solution as new data points are added. It maintains an active set of features along with their signs, and it updates the inverse Hessian (matrix K) incrementally using rank-1 updates. This model is particularly useful in online learning scenarios where data arrives sequentially and you need to update the regression solution in real time. It is also suitable for high-dimensional datasets where only a few features are relevant (i.e., when a sparse solution is expected).
 * How did you test your model to determine if it is working reasonably correctly?
-* What parameters have you exposed to users of your implementation in order to tune performance? 
+  
+* What parameters have you exposed to users of your implementation in order to tune performance?
+
+  The model exposes the following key parameters for performance tuning:
+    - mu (Regularization Parameter): This parameter (often denoted as lambda) controls the strength of the L1 penalty. Adjusting mu allows users to control the sparsity level of the solution.
+    - tol (Numerical Tolerance): This parameter sets the threshold for comparisons with zero, ensuring numerical stability during the iterative updates. It affects how the model determines if a coefficient is active or should be set to zero.
+These parameters enable users to fine-tune the balance between sparsity and fitting accuracy, as well as the numerical stability of the solution.
 * Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
