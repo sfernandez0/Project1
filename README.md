@@ -4,60 +4,56 @@
 
 ## Overview
 
-This project implements **LASSO** (Least Absolute Shrinkage and Selection Operator) regression using a **Homotopy method**. In this approach, the model is updated iteratively when new data points are added. The LASSO adds an L1 penalty to ordinary least squares regression to enforce sparsity, effectively performing feature selection by shrinking irrelevant coefficients to zero. This implementation is particularly useful in online settings and when handling high-dimensional data.
+This project provides a Python implementation of the Lasso (Least Absolute Shrinkage and Selection Operator) regression model using the Homotopy algorithm (similar to LARS - Least Angle Regression). The goal is to solve the linear regression problem with L1 regularization, which induces sparsity in the model coefficients and thereby performs automatic feature selection.
 
-## Group Members
+## Key Features
 
-- Susana Fernandez Cavia  
-- Arnau Fité Cluet  
-- Antonio Ardura
+* **Lasso Regression (L1):** Implements L1-penalized linear regression from first principles.
+* **Homotopy Algorithm:** Solves the regression problem by following the coefficient path as the regularization parameter `mu` varies.
+* **Configurable:** Allows setting the regularization parameter (`mu`), numerical tolerance (`tol`), and maximum number of iterations (`max_iter`).
+* **Familiar Interface:** Provides `.fit()` and `.predict()` methods similar to the Scikit-learn API.
+* **Test Suite:** Includes unit and integration tests using `pytest` to verify model correctness and robustness.
+* **Validation:** Uses synthetic test data and direct comparison with scikit-learn’s Lasso model to validate results.
 
-## Features
+## Prerequisites
 
-- **Iterative Model Updating:**  
-  The model is updated point by point using a two-step process:
-  - **Regularization Step:** Updates the solution by varying the regularization parameter.
-  - **Homotopy Step:** Computes the homotopy path (from t=0 to t=1) to incorporate a new data point.
-- **Active Set Management:**  
-  Maintains and updates the active set and signs of coefficients during the homotopy path.
-- **Robust Matrix Updates:**  
-  Uses rank-1 updates for the inverse Hessian (K) of the active variables.
-- **Predict Function:**  
-  Once the model is fitted, you can predict new data points.
+* Python (>= 3.7 recommended)
+* `pip` (Python package installer)
+* `git` (for cloning the repository)
 
-## Installation & Setup
+## Installation
 
-Follow these steps to set up and run the code:
+It is highly recommended to use a virtual environment to manage the project's dependencies.
 
-### 1. Clone the Repository
+1. **Clone the repository:**
+    ```bash
+    git clone <your-repository-url>  # Replace with the actual URL
+    cd <repository-directory-name>
+    ```
 
-```bash
-git clone https://github.com/YourUsername/YourRepository.git
-cd YourRepository
-```
+2. **Create and activate a virtual environment:**
+    - On macOS/Linux:
+        ```bash
+        python3 -m venv venv
+        source venv/bin/activate
+        ```
+    - On Windows:
+        ```bash
+        python -m venv venv
+        .\venv\Scripts\activate
+        ```
 
-### 2. Create & Activate Virtual Environment
-
-**Windows:**
-
-```bash
-python -m venv venv
-.\venv\Scripts\activate
-```
-**macOS/Linux:**
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-The dependencies include (but are not limited to):
-
-numpy
-scikit-learn
+3. **Install dependencies:**
+    Create a file named `requirements.txt` with the following content:
+    ```txt
+    numpy>=1.18.0
+    scikit-learn>=0.24.0
+    pytest>=6.0.0
+    ```
+    Then, install the packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 * What does the model you have implemented do and when should it be used?
 
