@@ -27,8 +27,8 @@ It is highly recommended to use a virtual environment to manage the project's de
 
 1. **Clone the repository:**
     ```bash
-    git clone <your-repository-url>  # Replace with the actual URL
-    cd <repository-directory-name>
+    git clone https://github.com/sfernandez0/Project1.git  
+    cd Project1
     ```
 
 2. **Create and activate a virtual environment:**
@@ -44,13 +44,7 @@ It is highly recommended to use a virtual environment to manage the project's de
         ```
 
 3. **Install dependencies:**
-    Create a file named `requirements.txt` with the following content:
-    ```txt
-    numpy>=1.18.0
-    scikit-learn>=0.24.0
-    pytest>=6.0.0
-    ```
-    Then, install the packages:
+  Install the packages with the given requirements.txt file:
     ```bash
     pip install -r requirements.txt
     ```
