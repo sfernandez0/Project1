@@ -80,7 +80,7 @@ It is highly recommended to use a virtual environment to manage the project's de
     
     The `test_prediction_accuracy` test checks the accuracy of the model on a simple linear dataset. The dataset used in this test exhibits a clear linear relationship, and the model is trained with an extremely small regularization parameter to ensure that the fitted model closely follows the true linear relationship. The predictions from the model are then compared to the true values using a strict tolerance, verifying that the model’s outputs are accurate.
 
-    Finally,the notebook `LassoComparisson-2.ipynb` directly compares the custom Lasso Homotopy model with scikit-learn's Lasso. It generates synthetic regression data with known sparse coefficients, trains both models on the same dataset, and evaluates prediction accuracy (using metrics like MSE) and coefficient sparsity. Visualizations, such as coefficient comparison plots and predicted vs. true value plots, help confirm that the custom implementation recovers the true sparse structure and performs similarly to scikit-learn's Lasso.
+    Finally, the notebook `LassoComparisson-2.ipynb` directly compares the custom Lasso Homotopy model with scikit-learn's Lasso. It generates synthetic regression data with known sparse coefficients, trains both models on the same dataset, and evaluates prediction accuracy (using metrics like MSE) and coefficient sparsity. Visualizations, such as coefficient comparison plots and predicted vs. true value plots, help confirm that the custom implementation recovers the true sparse structure and performs similarly to scikit-learn's Lasso.
 
 * What parameters have you exposed to users of your implementation in order to tune performance?
 
@@ -91,8 +91,7 @@ The following parameters can be tuned:
 These parameters allow users to adjust the level of sparsity, convergence precision, and computational cost.
 
 * Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
-  The current implementation may face challenges with:
-    - Extremely high-dimensional data or very high collinearity among features, which can lead to numerical instability.
-    - Data that deviates significantly from the assumptions of linear regression (e.g., non-linearity or heteroscedasticity).
-With additional time, improvements such as more robust numerical techniques (e.g., better regularized matrix inversion methods) and enhanced pre-processing steps could help mitigate these issues. However, some limitations may be inherent to the Lasso formulation in particularly challenging settings.
-
+  
+  There are certain inputs that present challenges for the current implementation. For example, when dealing with extremely high-dimensional data or features with very high collinearity, the algorithm can suffer from numerical instability. Additionally, the model might struggle with datasets that deviate significantly from the ideal linear regression assumptions, such as those exhibiting non-linearity or heteroscedasticity.
+  
+Given more time, we would have aimed to implement an algorithm even closer to the one described in the referenced paper, using more robust numerical techniques (such as improved regularized matrix inversion methods) and more advanced pre-processing steps. We believe that such improvements would yield a more optimal solution in challenging scenarios, although some limitations may remain inherent to the Lasso formulation itself.
