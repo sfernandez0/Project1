@@ -55,6 +55,8 @@ It is highly recommended to use a virtual environment to manage the project's de
     pip install -r requirements.txt
     ```
 
+## Questions
+
 * What does the model you have implemented do and when should it be used?
 
   The model implements Lasso regression using the Homotopy Method. It is particularly useful for high-dimensional datasets where sparsity in the model coefficients is desired for feature selection and improved interpretability.
@@ -86,3 +88,8 @@ The following parameters can be tuned:
 These parameters allow users to adjust the level of sparsity, convergence precision, and computational cost.
 
 * Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
+  The current implementation may face challenges with:
+    - Extremely high-dimensional data or very high collinearity among features, which can lead to numerical instability.
+    - Data that deviates significantly from the assumptions of linear regression (e.g., non-linearity or heteroscedasticity).
+With additional time, improvements such as more robust numerical techniques (e.g., better regularized matrix inversion methods) and enhanced pre-processing steps could help mitigate these issues. However, some limitations may be inherent to the Lasso formulation in particularly challenging settings.
+
