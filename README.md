@@ -19,7 +19,7 @@ This project provides a Python implementation of the Lasso (Least Absolute Shrin
 * **Configurable:** Allows setting the regularization parameter (`mu`), numerical tolerance (`tol`), and maximum number of iterations (`max_iter`).
 * **Familiar Interface:** Provides `.fit()` and `.predict()` methods similar to the Scikit-learn API.
 * **Test Suite:** Includes unit and integration tests using `pytest` to verify model correctness and robustness.
-* **Validation:** . This project includes a comprehensive set of tests implemented with PyTest to ensure that the Lasso Homotopy model behaves as expected under various scenarios. The tests cover different aspects of the model, from basic functionality to its performance on challenging datasets. It uses synthetic test data and direct comparison with scikit-learn’s Lasso model to validate results. This will be explained further down in more detail. 
+* **Validation:** . This project includes a comprehensive set of tests implemented with PyTest to ensure that the Lasso Homotopy model behaves as expected under various scenarios. The tests cover different aspects of the model, from basic functionality to its performance on challenging datasets. It uses synthetic test data and direct comparison with scikit-learn’s Lasso model (in the file LassoComparisson-2.ipynb) to validate results. This will be explained further down in more detail. 
 
 ## Prerequisites
 
@@ -68,17 +68,17 @@ It is highly recommended to use a virtual environment to manage the project's de
     - Testing on collinear datasets to ensure that the model produces sparse solutions.
     - Direct comparison of prediction accuracy and coefficient estimation with scikit-learn’s Lasso model (LassoComparisson.ipynb).
  
-To explain them in more detail:
-
-The first test, `test_small_dataset`, verifies that the model can be trained on a small dataset and produce valid predictions. In this test, a small CSV file is loaded and used to train the model with a moderate regularization parameter. The test then checks that the predictions have the correct shape and that all predicted values are finite, ensuring that no numerical issues (such as NaN or infinite values) occur during the computation.
-
-The `test_collinear_dataset` focuses on the model's ability to handle highly collinear data. It generates a synthetic dataset where each feature is a scaled version of a base feature, creating a scenario of extreme collinearity. The model is then trained on this data, and the test confirms that some of the coefficients are effectively zero, as expected when the model removes redundant features. This is a key characteristic of Lasso regression, where the L1 penalty should drive unnecessary coefficients to zero.
-
-Another test, `test_collinear_dataset2`, further examines the behavior of the model when applied to a real CSV dataset known to contain collinear features. In this test, the model is trained with a higher regularization parameter to enforce even stronger sparsity. The test verifies that the number of predictions matches the number of samples in the dataset and that the solution is sparse, meaning that fewer coefficients remain nonzero than the total number of features.
-
-The `test_higher_regularization` test is designed to demonstrate that increasing the regularization strength (i.e., the parameter `mu`) leads to a sparser solution. In this test, two models are trained on the same synthetic dataset – one with a very low value of `mu` and another with a high value. By comparing the number of nearly zero coefficients in both cases, the test shows that a higher regularization parameter indeed forces more coefficients towards zero, which is an expected behavior of the Lasso method.
-
-Finally, the `test_prediction_accuracy` test checks the accuracy of the model on a simple linear dataset. The dataset used in this test exhibits a clear linear relationship, and the model is trained with an extremely small regularization parameter to ensure that the fitted model closely follows the true linear relationship. The predictions from the model are then compared to the true values using a strict tolerance, verifying that the model’s outputs are accurate.
+    To explain them in more detail:
+    
+    The first test, `test_small_dataset`, verifies that the model can be trained on a small dataset and produce valid predictions. In this test, a small CSV file is loaded and used to train the model with a moderate regularization parameter. The test then checks that the predictions have the correct shape and that all predicted values are finite, ensuring that no numerical issues (such as NaN or infinite values) occur during the computation.
+    
+    The `test_collinear_dataset` focuses on the model's ability to handle highly collinear data. It generates a synthetic dataset where each feature is a scaled version of a base feature, creating a scenario of extreme collinearity. The model is then trained on this data, and the test confirms that some of the coefficients are effectively zero, as expected when the model removes redundant features. This is a key characteristic of Lasso regression, where the L1 penalty should drive unnecessary coefficients to zero.
+    
+    Another test, `test_collinear_dataset2`, further examines the behavior of the model when applied to a real CSV dataset known to contain collinear features. In this test, the model is trained with a higher regularization parameter to enforce even stronger sparsity. The test verifies that the number of predictions matches the number of samples in the dataset and that the solution is sparse, meaning that fewer coefficients remain nonzero than the total number of features.
+    
+    The `test_higher_regularization` test is designed to demonstrate that increasing the regularization strength (i.e., the parameter `mu`) leads to a sparser solution. In this test, two models are trained on the same synthetic dataset – one with a very low value of `mu` and another with a high value. By comparing the number of nearly zero coefficients in both cases, the test shows that a higher regularization parameter indeed forces more coefficients towards zero, which is an expected behavior of the Lasso method.
+    
+    Finally, the `test_prediction_accuracy` test checks the accuracy of the model on a simple linear dataset. The dataset used in this test exhibits a clear linear relationship, and the model is trained with an extremely small regularization parameter to ensure that the fitted model closely follows the true linear relationship. The predictions from the model are then compared to the true values using a strict tolerance, verifying that the model’s outputs are accurate.
   
 * What parameters have you exposed to users of your implementation in order to tune performance?
 
