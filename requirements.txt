@@ -1,3 +1,5 @@
 numpy
 pytest
 ipython
+scikit-learn
+matplotlib
