@@ -2,6 +2,12 @@
 
 # Lasso Homotopy Regression
 
+## Team Members
+
+* Arnau Fité Cluet
+* Susana Fernández Cavia
+* Antonio Ardura Carnicero
+
 ## Overview
 
 This project provides a Python implementation of the Lasso (Least Absolute Shrinkage and Selection Operator) regression model using the Homotopy algorithm (similar to LARS - Least Angle Regression). The goal is to solve the linear regression problem with L1 regularization, which induces sparsity in the model coefficients and thereby performs automatic feature selection.
@@ -56,6 +62,7 @@ It is highly recommended to use a virtual environment to manage the project's de
   The model implements Lasso regression using the Homotopy Method. It is particularly useful for high-dimensional datasets where sparsity in the model coefficients is desired for feature selection and improved interpretability.
   
 * How did you test your model to determine if it is working reasonably correctly?
+  
   We developed a suite of tests using pytest, including:
     - Testing on small synthetic datasets with known true coefficients.
     - Testing on collinear datasets to ensure that the model produces sparse solutions.
