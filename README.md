@@ -80,7 +80,7 @@ It is highly recommended to use a virtual environment to manage the project's de
     
     The `test_prediction_accuracy` test checks the accuracy of the model on a simple linear dataset. The dataset used in this test exhibits a clear linear relationship, and the model is trained with an extremely small regularization parameter to ensure that the fitted model closely follows the true linear relationship. The predictions from the model are then compared to the true values using a strict tolerance, verifying that the model’s outputs are accurate.
 
-    Finally,the notebook LassoComparisson-2.ipynb directly compares the custom Lasso Homotopy model with scikit-learn's Lasso. It generates synthetic regression data with known sparse coefficients, trains both models on the same dataset, and evaluates prediction accuracy (using metrics like MSE) and coefficient sparsity. Visualizations, such as coefficient comparison plots and predicted vs. true value plots, help confirm that the custom implementation recovers the true sparse structure and performs similarly to scikit-learn's Lasso.
+    Finally,the notebook `LassoComparisson-2.ipynb` directly compares the custom Lasso Homotopy model with scikit-learn's Lasso. It generates synthetic regression data with known sparse coefficients, trains both models on the same dataset, and evaluates prediction accuracy (using metrics like MSE) and coefficient sparsity. Visualizations, such as coefficient comparison plots and predicted vs. true value plots, help confirm that the custom implementation recovers the true sparse structure and performs similarly to scikit-learn's Lasso.
 
 * What parameters have you exposed to users of your implementation in order to tune performance?
 
