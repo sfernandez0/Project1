@@ -4,7 +4,7 @@ import warnings
 
 import numpy as np
 import pytest
-from LassoHomotopy2 import LassoHomotopyModel
+from model.LassoHomotopy import LassoHomotopyModel
 
 def load_csv_data(filename, target_col='target'):
     current_dir = os.path.dirname(os.path.abspath(__file__))
